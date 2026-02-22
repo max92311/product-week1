@@ -40,9 +40,33 @@ function createFiveGames() {
   }
 }
 
+// 테마 토글 함수
+function initTheme() {
+  const themeBtn = document.getElementById('theme-btn');
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  
+  if (currentTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeBtn.textContent = '☀️';
+  }
+
+  themeBtn.addEventListener('click', () => {
+    let theme = document.documentElement.getAttribute('data-theme');
+    if (theme === 'dark') {
+      document.documentElement.removeAttribute('data-theme');
+      themeBtn.textContent = '🌙';
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeBtn.textContent = '☀️';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+}
+
 // 초기 실행 및 버튼 이벤트 등록
 document.addEventListener('DOMContentLoaded', () => {
-  createFiveGames();
+  initTheme();
   
   const generateBtn = document.getElementById('generate-btn');
   generateBtn.addEventListener('click', createFiveGames);
