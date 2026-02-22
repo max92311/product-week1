@@ -22,6 +22,8 @@ function getColorClass(num) {
 // 5게임 생성 및 표시 함수
 function createFiveGames() {
   const container = document.getElementById('lotto-container');
+  const generateBtn = document.getElementById('generate-btn');
+  
   container.innerHTML = ''; // 기존 내용 삭제
 
   for (let i = 0; i < 5; i++) {
@@ -38,6 +40,9 @@ function createFiveGames() {
 
     container.appendChild(gameRow);
   }
+
+  // 버튼 텍스트 변경
+  generateBtn.textContent = '다시 생성하기';
 }
 
 // 테마 토글 함수
